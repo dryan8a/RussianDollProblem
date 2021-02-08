@@ -7,9 +7,13 @@ namespace RussianDollProblem
     {
         public static int EnvelopeCount((int length, int width)[] envelopes)
         {
+            if (envelopes.Length == 0) return 0;
+
             SortByLength(envelopes);
             int stackedEnvelopesByLength = CountEnvelopesInOrder(envelopes);
-            
+
+            if (stackedEnvelopesByLength == envelopes.Length) return stackedEnvelopesByLength;
+
             SortByWidth(envelopes);
             int stackedEnvelopesByWidth = CountEnvelopesInOrder(envelopes);
 
