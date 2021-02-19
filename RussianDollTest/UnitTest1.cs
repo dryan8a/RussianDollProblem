@@ -28,7 +28,9 @@ namespace RussianDollTest
             new object[] {4, new [] {(60,60),(50,50),(40,30),(20,20)}},
             new object[] {6, new [] {(50,50),(45,55),(43,52),(42,51),(25,50),(20,18),(15,5)}},
             new object[] {3, new [] {(50,20),(45,125),(25,48),(22,44),(4,124)}},
-            new object[] {1, new [] {(10,5),(10,6),(10,7),(11,7)}}
+            new object[] {1, new [] {(10,5),(10,6),(10,7),(10,7),(11,5))}},
+            new object[] {0, new (int,int)[0]},
+            new object[] {1, new [] {(5,5)}}
         };
 
         public IEnumerator<object[]> GetEnumerator()
