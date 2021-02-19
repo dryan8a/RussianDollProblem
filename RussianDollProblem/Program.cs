@@ -5,7 +5,7 @@ namespace RussianDollProblem
 {
     public static class RussianDollEnvelope
     {
-        public static int EnvelopeCount((int length, int width)[] envelopes)
+        public static int BrokenEnvelopeCount((int length, int width)[] envelopes)
         {
             if (envelopes.Length == 0) return 0;
 
