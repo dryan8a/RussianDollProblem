@@ -7,7 +7,42 @@ namespace RussianDollProblem
     {
         public static int EfficientEnvelopeCount((int length,int width)[] envelopes)
         {
-            throw new NotImplementedException();
+            if(envelopes.Length <= 1)
+            {
+                return envelopes.Length;
+            }
+
+            for (int i = envelopes.Length - 1; i > 0; i--) //Sorts from lowest to Highest by length
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (envelopes[j].length > envelopes[j + 1].length || (envelopes[j].length == envelopes[j + 1].length && envelopes[j].width > envelopes[j + 1].width))
+                    {
+                        var temp = envelopes[j];
+                        envelopes[j] = envelopes[j + 1];
+                        envelopes[j + 1] = temp;
+                    }
+                }
+            }
+
+            int currentMaxCount = 1;
+            var envelopeMaxCount = new int[envelopes.Length]; //corresponds to the max count that can fit in the envelope at i (including itself)
+            for(int i = 0;i<envelopes.Length;i++)
+            {
+                envelopeMaxCount[i] = 1; //every envelope has a minimum count of 1
+
+                for(int j = 0;j<i;j++)
+                {
+                    if(envelopes[i].length > envelopes[j].length && envelopes[i].width > envelopes[j].width && envelopeMaxCount[i] <= envelopeMaxCount[j])
+                    {
+                        envelopeMaxCount[i] = envelopeMaxCount[j] + 1;
+                    }
+                }
+
+                currentMaxCount = currentMaxCount > envelopeMaxCount[i] ? currentMaxCount : envelopeMaxCount[i];
+            }
+
+            return currentMaxCount;
         }
 
         /// <summary>
